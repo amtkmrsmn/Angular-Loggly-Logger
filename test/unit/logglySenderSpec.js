@@ -159,6 +159,7 @@ describe('logglyLogger Module:', function() {
       service.sendMessage( message );
 
       parsedPayload = parsePayload(new URL(imageMock.src));
+      console.log(parsedPayload);
       expect(parsedPayload.url).toEqual('http://bloggly.com');
 
     });
@@ -184,6 +185,7 @@ describe('logglyLogger Module:', function() {
       service.sendMessage( { message: message } );
 
       parsedPayload = parsePayload(new URL(imageMock.src));
+      console.log(parsedPayload);
       expect(parsedPayload).toEqual( { appVersion: '1.1.0', browser: 'Chrome', message: message } );
 
       extra.username = "baldrin";
@@ -191,6 +193,7 @@ describe('logglyLogger Module:', function() {
       service.sendMessage( { message: message } );
 
       parsedPayload = parsePayload(new URL(imageMock.src));
+      console.log(parsedPayload);
       expect(parsedPayload).toEqual( { appVersion: '1.1.0', browser: 'Chrome', message: message, username: "baldrin" } );
 
     });
@@ -208,6 +211,7 @@ describe('logglyLogger Module:', function() {
       service.sendMessage( { message: message } );
 
       parsedPayload = parsePayload(new URL(imageMock.src));
+      console.log(parsedPayload);
       expect(parsedPayload).toEqual( { appVersion: '1.1.0', browser: 'Chrome', message: message } );
     });
 
@@ -223,6 +227,7 @@ describe('logglyLogger Module:', function() {
       angular.forEach( levels, function (level) {
         $log[level.toLowerCase()].call($log, logMessage);
         var parsedPayload = parsePayload(new URL(imageMock.src));
+        console.log(parsedPayload);
         expect(parsedPayload.level).toEqual(level);
       });
 
